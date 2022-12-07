@@ -18,15 +18,8 @@ fun main() {
   }
 
   fun part2(input: List<String>): Int {
-    val mutableSummed = input.toSummedList()
-    var top3 = 0
-    (1..3).forEach { _ ->
-      val index = mutableSummed.indexOf(mutableSummed.max())
-      top3 += mutableSummed[index]
-      mutableSummed.removeAt(index)
-    }
-
-    return top3
+    val mutableSummed = input.toSummedList().also { it.sortDescending() }
+    return mutableSummed[0] + mutableSummed[1] + mutableSummed[2]
   }
 
   // test if implementation meets criteria from the description, like:
